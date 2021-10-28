@@ -1,0 +1,19 @@
+body {
+    background-color: black;
+}
+
+#title {
+    color: white;
+    text-align: center;
+}
+
+#barsContainer{
+    height: auto;
+}
+
+.bar {
+    background-color: aqua;
+    width: 7px;
+    float: left;
+    margin: 1px;
+}
