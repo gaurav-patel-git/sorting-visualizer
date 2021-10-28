@@ -1,6 +1,6 @@
-function createBars() {
+function createBars(numBars) {
     let nums = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < numBars; i++) {
         randInt = Math.floor(Math.random() * 100);
         nums.push(randInt);
     }
@@ -18,8 +18,12 @@ function createBars() {
 }
 let barsArr = [];
 newArrayButton = document.getElementById('newArray');
-newArrayButton.addEventListener('click', ()=>{
-    let newBars = createBars();
+let barRange = document.getElementById('numBars');
+
+
+barRange.addEventListener('input', ()=>{
+    let numBars = barRange.value;
+    let newBars = createBars(numBars);
     barsArr = newBars;
     let barsContainer = document.getElementById('barsContainer')    
     barsContainer.replaceChildren(...barsArr);
@@ -51,13 +55,14 @@ bubbleSort = document.getElementById('bubbleSort');
 
 bubbleSort.addEventListener('click', async ()=>{
     let length = barsArr.length;
+    let speed = document.getElementById('speed').value;
     for(let i=0; i<length; i++){
         let lastBar;
         for(let j=0; j<length-i-1; j++){
             let curBar = barsArr[j];
             let nextBar = barsArr[j+1];
             swapElement(curBar, nextBar);
-            await new Promise(resolve => setTimeout(() => {resolve()}, 20));
+            await new Promise(resolve => setTimeout(() => {resolve()}, speed));
             curBar.style.background = 'aqua';
             nextBar.style.background = 'aqua';
             lastBar = nextBar;
